@@ -5,28 +5,20 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 /**
- * @Author:guoqing.zhu
- * @Date：2021/11/30
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:用户信息
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Operator {
 
-    /**
-     * 操作人ID
-     */
-    private String operatorId;
+  /** 操作人ID */
+  private String operatorId;
 
-    /**
-     * 操作人姓名
-     */
-    private String operatorName;
+  /** 操作人姓名 */
+  private String operatorName;
 
-    /**
-     * 操作人IP
-     */
-    private String operatorIp;
+  /** 操作人IP */
+  private String operatorIp;
 }

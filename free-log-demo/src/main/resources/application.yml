@@ -1,0 +1,24 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: goods-service
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/mydb01?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: 320512
+
+  aop:
+    auto: true
+
+mybatis:
+  mapper-locations: mappers/*.xml
+  type-aliases-package: cn.zhuguoqing.demo.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+
+operation:
+  log:
+    importUrl: /Users/fechinchu/recordLog/import/

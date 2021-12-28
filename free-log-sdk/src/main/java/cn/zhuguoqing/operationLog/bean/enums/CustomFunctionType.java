@@ -1,23 +1,26 @@
 package cn.zhuguoqing.operationLog.bean.enums;
 
+import cn.zhuguoqing.operationLog.service.factory.ModifyColCommentValueFactory;
+
 /**
- * @Author:guoqing.zhu
- * @Date：2021/12/16 00:18
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:全局自定义方法的是用来修改字段的注释的还是用来修改字段的值的
+ * @see ModifyColCommentValueFactory
  */
 public enum CustomFunctionType {
+  /** 注释 */
+  KEY,
+  /** 值 */
+  VALUE;
 
-    KEY,
-    VALUE;
-
-    public String getType() {
-        if (this.equals(KEY)) {
-            return "KEY";
-        }
-        if (this.equals(VALUE)) {
-            return "VALUE";
-        }
-        return null;
-    };
+  public String getType() {
+    if (this.equals(KEY)) {
+      return "KEY";
+    }
+    if (this.equals(VALUE)) {
+      return "VALUE";
+    }
+    return null;
+  }
+  ;
 }

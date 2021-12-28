@@ -1,30 +1,29 @@
 package cn.zhuguoqing.operationLog.bean.enums;
 
 /**
- * @Author:guoqing.zhu
- * @Date：2021/12/9 16:36
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:Diff类的策略类型
+ * @see cn.zhuguoqing.operationLog.support.diff.DiffProcessorFactory
  */
 public enum DiffType {
-    SINGLE_UPDATE,
-    LIST_ADD_DELETE,
-    SINGLE_ADD,
-    LIST_UPDATE;
+  /** 单条数据更新 */
+  SINGLE_UPDATE,
+  /** 列表的增删改; */
+  LIST_ADD_DELETE,
+  /** 单条数据添加 */
+  SINGLE_ADD;
 
-    public String getType() {
-        if (this.equals(SINGLE_UPDATE)) {
-            return "SINGLE_UPDATE";
-        }
-        if (this.equals(LIST_ADD_DELETE)) {
-            return "LIST_ADD_DELETE";
-        }
-        if(this.equals(SINGLE_ADD)){
-            return "SINGLE_ADD";
-        }
-        if(this.equals(LIST_UPDATE)){
-            return "LIST_UPDATE";
-        }
-        return null;
-    };
+  public String getType() {
+    if (this.equals(SINGLE_UPDATE)) {
+      return "SINGLE_UPDATE";
+    }
+    if (this.equals(LIST_ADD_DELETE)) {
+      return "LIST_ADD_DELETE";
+    }
+    if (this.equals(SINGLE_ADD)) {
+      return "SINGLE_ADD";
+    }
+    return null;
+  }
+  ;
 }

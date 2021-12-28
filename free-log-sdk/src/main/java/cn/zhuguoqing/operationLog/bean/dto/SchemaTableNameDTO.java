@@ -4,16 +4,16 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * @Author:guoqing.zhu
- * @Date：2021/12/3 17:21
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:封装schemaName和tableName的实体
  */
 @Data
 @ToString
 public class SchemaTableNameDTO {
 
-    private String tableSchema;
+  /** 库名 */
+  private String schemaName;
 
-    private String tableName;
+  /** 表名 */
+  private String tableName;
 }

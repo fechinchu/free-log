@@ -7,25 +7,30 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @Author:guoqing.zhu
- * @Date：2021/12/2 23:10
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:封装Diff的所有信息,用于Diff比较
+ * @see cn.zhuguoqing.operationLog.support.diff.AbstractDiffProcessorTemplate
+ * @see cn.zhuguoqing.operationLog.support.diff.IDiffProcessor
  */
 @Data
 @ToString
 public class DiffAnyThingDTO {
 
-    private Map<String, String> columnCommentMap;
+  /** 字段及其注释 */
+  private Map<String, String> columnCommentMap;
 
-    private List<Map<String, Object>> oldValueMap;
+  /** 旧值 */
+  private List<Map<String, Object>> oldValueMap;
 
-    private List<Map<String, Object>> newValueMap;
+  /** 新值 */
+  private List<Map<String, Object>> newValueMap;
 
-    private List<String> columns;
+  /** 需要记录的字段 */
+  private List<String> columns;
 
-    private DiffDTO diffDTO;
+  /** Diff的封装 */
+  private DiffDTO diffDTO;
 
-    private String sql;
-
+  /** 组装好的SQL语句 */
+  private String sql;
 }

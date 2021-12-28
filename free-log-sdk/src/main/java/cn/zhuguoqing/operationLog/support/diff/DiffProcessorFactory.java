@@ -9,30 +9,33 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * @Author:guoqing.zhu
- * @Date：2021/12/9 16:22
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:DiffProcessor策略工厂
  */
 @Component
 public class DiffProcessorFactory {
 
-    @Autowired
-    private DebugProcessor debugProcessor;
+  @Autowired private DebugProcessor debugProcessor;
 
-    @Autowired
-    private List<IDiffProcessor> diffProcessors;
+  @Autowired private List<IDiffProcessor> diffProcessors;
 
-    public IDiffProcessor getDiffProcessor(DiffType type){
-        if (type == null) {
-            debugProcessor.error("DiffProcessorFactory type cannot be null",null);
-            return null;
-        }
-        Optional<IDiffProcessor> processor = diffProcessors.stream().filter((s) -> type.equals(s.getDiffType())).findFirst();
-        if (processor.isPresent()) {
-            return processor.get();
-        }
-        debugProcessor.error("DiffProcessorFactory strategy cannot find",null);
-        return null;
+  /**
+   * 根据Diff策略获取DiffProcessor
+   *
+   * @param type 策略类型
+   * @return DiffProcessor
+   */
+  public IDiffProcessor getDiffProcessor(DiffType type) {
+    if (type == null) {
+      debugProcessor.error("DiffProcessorFactory type cannot be null", null);
+      return null;
     }
+    Optional<IDiffProcessor> processor =
+        diffProcessors.stream().filter((s) -> type.equals(s.getDiffType())).findFirst();
+    if (processor.isPresent()) {
+      return processor.get();
+    }
+    debugProcessor.error("DiffProcessorFactory strategy cannot find", null);
+    return null;
+  }
 }

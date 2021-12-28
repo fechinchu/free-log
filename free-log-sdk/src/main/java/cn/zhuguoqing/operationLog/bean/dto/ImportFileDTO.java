@@ -4,27 +4,19 @@ import lombok.Data;
 import lombok.ToString;
 
 /**
- * @Author:guoqing.zhu
- * @Date：2021/12/6 10:07
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:导入文件用的实体封装
  */
 @Data
 @ToString
 public class ImportFileDTO {
 
-    /**
-     * 文件id
-     */
-    private Long fileId;
+  /** 文件id */
+  private Long fileId;
 
-    /**
-     * 文件名称
-     */
-    private String fileName;
+  /** 文件名称 */
+  private String fileName;
 
-    /**
-     * inputStream不能用,只能用这玩意,会报异常
-     */
-    private byte[] bytes;
+  /** 字节数组 */
+  private byte[] bytes;
 }

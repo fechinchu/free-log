@@ -1,36 +1,39 @@
 package cn.zhuguoqing.operationLog.bean.enums;
 
 /**
- * @Author:guoqing.zhu
- * @Date：2021/11/30
- * @Desription: TODO
- * @Version: 1.0
+ * @author guoqing.zhu
+ *     <p>description:日志的策略类型枚举
  */
 public enum OperationType {
 
-	ADD,
-	UPDATE,
-	COMPLEX_UPDATE,
-	DELETE,
-	IMPORT;
+  /** 添加 */
+  ADD,
+  /** 简单修改 */
+  UPDATE,
+  /** 复杂修改 */
+  COMPLEX_UPDATE,
+  /** 删除 */
+  DELETE,
+  /** 导入 */
+  IMPORT;
 
-
-	public String getType() {
-		if (this.equals(ADD)) {
-			return "ADD";
-		}
-		if (this.equals(UPDATE)) {
-			return "UPDATE";
-		}
-		if (this.equals(DELETE)) {
-			return "DELETE";
-		}
-		if(this.equals(IMPORT)){
-			return "IMPORT";
-		}
-		if(this.equals(COMPLEX_UPDATE)){
-			return "COMPLEX_UPDATE";
-		}
-		return null;
-	};
+  public String getType() {
+    if (this.equals(ADD)) {
+      return "ADD";
+    }
+    if (this.equals(UPDATE)) {
+      return "UPDATE";
+    }
+    if (this.equals(DELETE)) {
+      return "DELETE";
+    }
+    if (this.equals(IMPORT)) {
+      return "IMPORT";
+    }
+    if (this.equals(COMPLEX_UPDATE)) {
+      return "COMPLEX_UPDATE";
+    }
+    return null;
+  }
+  ;
 }
