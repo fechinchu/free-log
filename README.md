@@ -1,4 +1,3 @@
-@[TOC](free-log)
 # free-log
 **Customize your operation log in almost any form**
 
