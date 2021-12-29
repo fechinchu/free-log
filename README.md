@@ -13,7 +13,7 @@ free-log是一款可扩展性比较高的日志框架:它能实现记录`某个�
 <dependency>
     <groupId>cn.zhuguoqing</groupId>
     <artifactId>free-log-sdk</artifactId>
-    <version>1.0.2-RELEASE</version>
+    <version>1.0.3-RELEASE</version>
 </dependency>
 ```
 
@@ -1098,3 +1098,4 @@ public class UpdateFreightTemplateParser implements IParseFunction {
 贴上整体代码:
 
 ![image-20211229222536183](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229222536183.png)
+
