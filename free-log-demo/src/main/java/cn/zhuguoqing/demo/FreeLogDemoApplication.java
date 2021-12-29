@@ -17,9 +17,6 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class FreeLogDemoApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(FreeLogDemoApplication.class);
     }
-
-
 }

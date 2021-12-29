@@ -12,7 +12,7 @@ import lombok.ToString;
 public class SchemaTableNameDTO {
 
   /** 库名 */
-  private String schemaName;
+  private String tableSchema;
 
   /** 表名 */
   private String tableName;

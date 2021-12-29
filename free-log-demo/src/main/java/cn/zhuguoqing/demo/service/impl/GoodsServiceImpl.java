@@ -30,4 +30,14 @@ public class GoodsServiceImpl implements GoodsService {
             throw new RuntimeException("插入商品失败");
         }
     }
+
+    @Override
+    public void updateGoods(GoodsDomain goodsDomain) {
+        goodsDao.updateByPrimaryKey(goodsDomain);
+    }
+
+    @Override
+    public void deleteGoodsById(String id) {
+        goodsDao.deleteByPrimaryKey(id);
+    }
 }

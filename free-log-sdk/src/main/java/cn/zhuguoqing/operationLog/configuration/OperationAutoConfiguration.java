@@ -1,5 +1,9 @@
 package cn.zhuguoqing.operationLog.configuration;
 
+import cn.zhuguoqing.operationLog.aop.strategy.AddStrategy;
+import cn.zhuguoqing.operationLog.aop.strategy.ComplexUpdateStrategy;
+import cn.zhuguoqing.operationLog.aop.strategy.DeleteStrategy;
+import cn.zhuguoqing.operationLog.aop.strategy.ImportStrategy;
 import cn.zhuguoqing.operationLog.service.*;
 import cn.zhuguoqing.operationLog.service.factory.ParseFunctionFactory;
 import cn.zhuguoqing.operationLog.service.impl.*;
@@ -77,4 +81,5 @@ public class OperationAutoConfiguration {
   public ICheckResultService checkResult() {
     return new DefaultCheckResultServiceImpl();
   }
+
 }

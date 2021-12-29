@@ -96,4 +96,12 @@ public class BasicResult<T> {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "BasicResult{" +
+                "code='" + code + '\'' +
+                ", message='" + message + '\'' +
+                ", data=" + data +
+                '}';
+    }
 }

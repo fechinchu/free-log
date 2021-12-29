@@ -66,7 +66,7 @@ public interface OperationLogMapper {
 
   @Insert(
       "insert into operation_log_debug (operation_log_id,error_info,log_positioning_id,create_time)"
-          + " values (#{operationLogId},#{errorInfo},#{logPositioningId},sysdate()")
+          + " values (#{operationLogId},#{errorInfo},#{logPositioningId},sysdate())")
   @Options(useGeneratedKeys = true, keyColumn = "id", keyProperty = "p.id")
   void saveErrorInfo(OperationDebugDTO operationDebugDTO);
 

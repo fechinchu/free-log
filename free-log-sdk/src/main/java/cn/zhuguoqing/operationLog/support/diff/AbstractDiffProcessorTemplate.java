@@ -167,7 +167,7 @@ public abstract class AbstractDiffProcessorTemplate implements IDiffProcessor {
   protected Map<String, String> getColumnComment(String schemaName, String tableName) {
     Map<String, String> columnCommentMap = new HashMap<>();
     SchemaTableNameDTO schemaTableNameDTO = new SchemaTableNameDTO();
-    schemaTableNameDTO.setSchemaName(schemaName);
+    schemaTableNameDTO.setTableSchema(schemaName);
     schemaTableNameDTO.setTableName(tableName);
     List<ColumnCommentDTO> columnCommentDTOS =
         iOperationLogService.selectColumnCommentByTable(schemaTableNameDTO);

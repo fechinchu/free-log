@@ -48,7 +48,7 @@ public class OperationLogsService {
     }
     String[] split = logTable.split("\\.");
     SchemaTableNameDTO schemaTableNameDTO = new SchemaTableNameDTO();
-    schemaTableNameDTO.setSchemaName(split[0]);
+    schemaTableNameDTO.setTableSchema(split[0]);
     schemaTableNameDTO.setTableName(split[1]);
     List<ColumnCommentDTO> columnCommentDTOList =
         iOperationLogService.selectColumnCommentByTable(schemaTableNameDTO);

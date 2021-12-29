@@ -15,7 +15,9 @@ public enum OperationType {
   /** 删除 */
   DELETE,
   /** 导入 */
-  IMPORT;
+  IMPORT,
+  /** 简单操作 */
+  SIMPLE;
 
   public String getType() {
     if (this.equals(ADD)) {
@@ -33,7 +35,9 @@ public enum OperationType {
     if (this.equals(COMPLEX_UPDATE)) {
       return "COMPLEX_UPDATE";
     }
+    if(this.equals(SIMPLE)){
+      return "SIMPLE";
+    }
     return null;
   }
-  ;
 }

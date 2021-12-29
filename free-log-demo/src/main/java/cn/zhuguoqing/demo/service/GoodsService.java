@@ -12,4 +12,7 @@ public interface GoodsService {
 
     void addGoods(GoodsDomain goodsDomain);
 
+    void updateGoods(GoodsDomain goodsDomain);
+
+    void deleteGoodsById(String id);
 }
