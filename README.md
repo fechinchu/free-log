@@ -8,13 +8,13 @@ free-log是一款可扩展性比较高的日志框架:它能实现记录`某个�
 
 Github源码地址:https://github.com/fechinchu/free-log
 
-![image-20211230100728483](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230100728483.png)
+![image-20211230101824567](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101824567.png)
 
-![image-20211230100903178](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230100903178.png)
+![image-20211230101854663](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101854663.png)
 
 ![image-20211230101014969](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101014969.png)
 
-![image-20211230101331855](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101331855.png)
+![image-20211230101952994](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101952994.png)
 
 ## 1.Prepare
 
