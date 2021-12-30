@@ -1,5 +1,35 @@
 # free-log
 
+* [1.Prepare](#1prepare)
+     * [1.1.Maven依赖](#11maven依赖)
+     * [1.2.SQL](#12sql)
+     * [1.3.配置你的持久化方案](#13配置你的持久化方案)
+     * [1.4.@EnableOperationLog](#14enableoperationlog)
+* [2.Just Do it](#2just-do-it)
+  * [2.1.基础使用](#21基础使用)
+  * [2.2.复杂修改记录前后对比值](#22复杂修改记录前后对比值)
+  * [2.3.上传文件记录日志](#23上传文件记录日志)
+* [3.How can I do better?](#3how-can-i-do-better)
+  * [3.1.如何能记录我只想记录部分字段(COMPLEX_UPDATE)](#31如何能记录我只想记录部分字段complex_update)
+  * [3.2.如何修改我需要修正字段的注释或值(COMPLEX_UPDATE)](#32如何修改我需要修正字段的注释或值complex_update)
+  * [3.3.如何在记录日志的时候记录操作人的信息](#33如何在记录日志的时候记录操作人的信息)
+  * [3.4.如何修正日志记录的信息](#34如何修正日志记录的信息)
+    * [3.4.1.IParseFunction与IModifyColCommentValueService区别](#341iparsefunction与imodifycolcommentvalueservice区别)
+  * [3.5.如何根据方法执行的情况来动态的描述日志记录](#35如何根据方法执行的情况来动态的描述日志记录)
+    * [3.5.1.基于SpEL表达式](#351基于spel表达式)
+    * [3.5.2.基于LogRecordContext上下文对象](#352基于logrecordcontext上下文对象)
+  * [3.6.如何能设定条件,条件满足才会记录日志](#36如何能设定条件条件满足才会记录日志)
+* [4.How to customize?](#4how-to-customize)
+  * [4.1.如何将日志和上传的文件进行集中管理](#41如何将日志和上传的文件进行集中管理)
+  * [4.2.如何快速记录和定位日志问题](#42如何快速记录和定位日志问题)
+  * [4.3.如何将Debug日志也进行集中管理](#43如何将debug日志也进行集中管理)
+  * [4.4.假如项目中在并没有抛出异常而是封装成Result返回,我如何得到错误信息并记录?](#44假如项目中在并没有抛出异常而是封装成result返回我如何得到错误信息并记录)
+* [5.Advanced features](#5advanced-features)
+  * [5.1.场景一:](#51场景一)
+  * [5.2.场景二:](#52场景二)
+  * [5.3.场景三:](#53场景三)
+  * [5.4.I  want do it by myself](#54i--want-do-it-by-myself)
+
 **Customize your operation log in almost any form**
 
 **定制你的业务操作日志**
