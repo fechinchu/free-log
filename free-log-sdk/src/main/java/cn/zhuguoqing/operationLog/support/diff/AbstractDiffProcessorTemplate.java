@@ -13,6 +13,7 @@ import cn.zhuguoqing.operationLog.service.IExcludeColumnGetService;
 import cn.zhuguoqing.operationLog.service.IModifyColCommentValueService;
 import cn.zhuguoqing.operationLog.service.IOperationLogQueryService;
 import cn.zhuguoqing.operationLog.service.factory.ModifyColCommentValueFactory;
+import com.google.common.annotations.Beta;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,7 @@ import java.util.function.Function;
  *     <p>description:记录对比信息的模板
  */
 @Slf4j
+@Beta
 public abstract class AbstractDiffProcessorTemplate implements IDiffProcessor {
 
   @Autowired protected DebugProcessor debugProcessor;

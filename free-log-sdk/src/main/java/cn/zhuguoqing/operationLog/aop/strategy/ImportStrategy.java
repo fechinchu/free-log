@@ -45,7 +45,9 @@ public class ImportStrategy extends AbstractBaseStrategyTemplate {
       return null;
     }
     if (m != null) {
-      return m.getOriginalFilename();
+      String originalFilename = m.getOriginalFilename();
+      LogRecordContext.putVariable("fileName", originalFilename);
+      return originalFilename;
     } else {
       Object fileName = LogRecordContext.getVariable("fileName");
       if (fileName == null) {
@@ -84,6 +86,9 @@ public class ImportStrategy extends AbstractBaseStrategyTemplate {
       inputStream = m.getInputStream();
     }
     byte[] bytes = ByteStreams.toByteArray(inputStream);
-    operationLogService.insert(Long.parseLong(logId), m.getOriginalFilename(), bytes);
+    Object fileName = LogRecordContext.getVariable("fileName");
+    if (fileName != null) {
+      operationLogService.insert(Long.parseLong(logId), (String) fileName, bytes);
+    }
   }
 }

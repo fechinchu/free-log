@@ -3,6 +3,7 @@ package cn.zhuguoqing.operationLog.support.diff;
 import cn.zhuguoqing.operationLog.bean.domain.OperationLogDetailDomain;
 import cn.zhuguoqing.operationLog.bean.dto.DiffAnyThingDTO;
 import cn.zhuguoqing.operationLog.bean.enums.DiffType;
+import com.google.common.annotations.Beta;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,7 @@ import java.util.List;
  */
 @Component
 @Slf4j
+@Beta
 public class SingleUpdateDomainDiffProcessor extends AbstractDiffProcessorTemplate {
 
   @Override

@@ -4,6 +4,7 @@ import cn.zhuguoqing.operationLog.bean.domain.OperationLogDetailDomain;
 import cn.zhuguoqing.operationLog.bean.dto.DiffDTO;
 import cn.zhuguoqing.operationLog.bean.enums.DiffType;
 import cn.zhuguoqing.operationLog.support.context.LogRecordContext;
+import com.google.common.annotations.Beta;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -19,6 +20,7 @@ import java.util.Set;
  */
 @Component
 @Slf4j
+@Beta
 public class SingleAddDomainDiffProcessor extends AbstractDiffProcessorTemplate {
 
   /** 插入后执行的策略 */

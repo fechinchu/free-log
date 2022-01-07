@@ -3,11 +3,13 @@ package cn.zhuguoqing.operationLog.support.diff;
 import cn.zhuguoqing.operationLog.bean.dto.DiffAnyThingDTO;
 import cn.zhuguoqing.operationLog.bean.dto.DiffDTO;
 import cn.zhuguoqing.operationLog.bean.enums.DiffType;
+import com.google.common.annotations.Beta;
 
 /**
  * @author guoqing.zhu
  *     <p>description:Diff接口
  */
+@Beta
 public interface IDiffProcessor {
 
   /**

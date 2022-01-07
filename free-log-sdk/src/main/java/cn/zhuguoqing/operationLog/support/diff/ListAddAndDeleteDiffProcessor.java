@@ -6,6 +6,7 @@ import cn.zhuguoqing.operationLog.bean.dto.DiffDTO;
 import cn.zhuguoqing.operationLog.bean.enums.DiffType;
 import cn.zhuguoqing.operationLog.support.context.LogRecordContext;
 import cn.zhuguoqing.operationLog.support.util.GetDiffUtil;
+import com.google.common.annotations.Beta;
 import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,7 @@ import java.util.Map;
  */
 @Component
 @Slf4j
+@Beta
 public class ListAddAndDeleteDiffProcessor extends AbstractDiffProcessorTemplate {
 
   /**

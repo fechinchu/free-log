@@ -2,6 +2,7 @@ package cn.zhuguoqing.operationLog.support.diff;
 
 import cn.zhuguoqing.operationLog.bean.enums.DiffType;
 import cn.zhuguoqing.operationLog.support.debugger.DebugProcessor;
+import com.google.common.annotations.Beta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +14,7 @@ import java.util.Optional;
  *     <p>description:DiffProcessor策略工厂
  */
 @Component
+@Beta
 public class DiffProcessorFactory {
 
   @Autowired private DebugProcessor debugProcessor;
