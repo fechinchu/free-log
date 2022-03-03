@@ -10,10 +10,11 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Slf4j
-public class AddStrategy extends AbstractBaseStrategyTemplate {
+public class AddStrategy extends AbstractBaseStrategyTemplate{
 
   @Override
   public OperationType getOperationLogType() {
     return OperationType.ADD;
   }
+
 }

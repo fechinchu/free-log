@@ -25,10 +25,7 @@
   * [4.3.如何将Debug日志也进行集中管理](#43如何将debug日志也进行集中管理)
   * [4.4.假如项目中在并没有抛出异常而是封装成Result返回,我如何得到错误信息并记录?](#44假如项目中在并没有抛出异常而是封装成result返回我如何得到错误信息并记录)
 * [5.Advanced features](#5advanced-features)
-  * [5.1.场景一:](#51场景一)
-  * [5.2.场景二:](#52场景二)
-  * [5.3.场景三:](#53场景三)
-  * [5.4.I  want do it by myself](#54i--want-do-it-by-myself)
+  * [5.1.I want do it by myself](#51i-want-do-it-by-myself)
 
 **Customize your operation log in almost any form**
 
@@ -37,14 +34,6 @@
 free-log是一款可扩展性很高的日志框架:它能实现记录`某个人`在`某时刻`做了`什么事`,如果是修改,能够记录`修改前的值`,以及`修改后的值`.该操作`成功或者失败`,如果失败那么`失败原因是什么`;
 
 Github源码地址:https://github.com/fechinchu/free-log
-
-![image-20211230101824567](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101824567.png)
-
-![image-20211230101854663](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101854663.png)
-
-![image-20211230101014969](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101014969.png)
-
-![image-20211230101952994](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211230101952994.png)
 
 ## 1.Prepare
 
@@ -543,18 +532,10 @@ public class GoodsDebugServiceImpl extends AbstractDebugService {
 }
 ```
 
-![image-20211229202914905](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229202914905.png)
-
 在表`operation_log_debug`表中,如果出现问题,看到记录下来的问题信息.
 
 * `operation_log_id`:是日志的主键;
 * `log_position_id`:是生成的用于定位的Id.出现问题需要查看详细信息.拿着该id去服务器日志寻找可以快速的定位到当前接口出现的问题.
-
-如下是生产案例:在接口调用过程中报了错'该手机号已经注册',这时候拿着定位的id去服务器日志中找可以快速定位问题.
-
-![image-20211229203504854](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229203504854.png)
-
-![image-20211229203704458](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229203704458.png)
 
 ### 4.3.如何将Debug日志也进行集中管理
 
@@ -643,7 +624,7 @@ public class GoodsCheckResult implements ICheckResultService {
 >
 > 目前思考下来通用性比较高的就是Diff包下的方案.后期可能会更新使用更好的方案;
 
-![image-20211229212031195](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229212031195.png)
+<img src="https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229212031195.png" alt="image-20211229212031195" style="zoom:50%;" />
 
 使用的实体是`DiffDTO`,代码如下:
 
@@ -1008,83 +989,7 @@ public class DiffDTO {
 * `SingleAddDomainDiffProcessor`:添加数据;
 * `SingleUpdateDomainDiffProcessor`:更新数据;
 
-### 5.1.场景一:
-
-一个列表可添加,可删除,可修改?如何记录?
-
-<img src="https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229213300884.png" alt="image-20211229213300884" style="zoom:50%;" />
-
-采用`ListAddAndDeleteDiffProcessor`
-
-代码如下:画红圈的是是记录日志用代码.
-
-![image-20211229213634293](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229213634293.png)
-
-* 第一步:项目中注入`DiffProcessorFactory`
-
-![image-20211229213746034](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229213746034.png)
-
-* 第二步:根据需求获取DiffProcessor
-
-```java
-IDiffProcessor diffProcessor = diffProcessorFactory.getDiffProcessor(DiffType.LIST_ADD_DELETE);
-```
-
-* 第三步:在删除和新增或修改之前,查出旧值;
-
-```java
-DiffAnyThingDTO diffAnyThingDTO = diffProcessor.beforeUpdate(new DiffDTO.Builder()
-                        .setSchemaTableName("product.g_prod_param")
-                        .setKeyName("spu_id")
-                        .setKeyValue(param.getSpuId().toString())
-                        .setDiffName("商品参数")
-                        .setIncludeRecordClms("param_key", "param_value")
-                        .build());
-```
-
-这里有几个关键信息需要设置,
-
-`schemaTableName`,库表名;	
-
-`keyName`:根据什么属性来查;
-
-`keyValue`:属性的值是什么;
-
-`diffName`:记录后展示的名称;
-
-当然这里还有可拓展的自定义方法,`addCustomFunction()`去添加你想要执行的方法,在记录日志时候就会执行(后续讲)
-
-* 第四步:操作完之后,调用`afterUpdate()`;
-
-```java
-diffProcessor.afterUpdate(diffAnyThingDTO)
-```
-
-得到日志展示结果:
-
-![image-20211229214708348](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229214708348.png)
-
-### 5.2.场景二:
-
-接口中如果能够查到数据就修改,查不到就新增,还要对详细表有新增删除修改.这种操作如何记录日志?
-
-![image-20211229215953174](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229215953174.png)
-
-![image-20211229215630416](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229215630416.png)
-
-上述是我所在项目中一个关于会员成长值修改的代码.用到了三种策略.得到新旧值如下
-
-![image-20211229220324358](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229220324358.png)
-
-### 5.3.场景三:
-
-有些更新的操作我需要根据查出来的结果来动态的判定是不是需要执行自定义的方法:
-
-![image-20211229220713804](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229220713804.png)
-
-我在添加自定义功能是,编写了一个插件`PriceUnitSmallConBigChangeFunction()`;该插件是用来根据skuId来判断该商品是不是称重商品,如果不是称重商品不操作价格,如果是称重商品,需要对价格进行转化.
-
-### 5.4.I  want do it by myself
+### 5.1.I want do it by myself
 
 如果上述功能还是不能满足你复杂的业务需求.还有一个完全给你定制化的解决方案
 
@@ -1094,49 +999,3 @@ diffProcessor.afterUpdate(diffAnyThingDTO)
 * 将你想要从自定义方法中获取的内容在源方法中放入上下文对象中;
 * 实现`IParseFunction`接口,编写自定义方法;
 * 在`apply()`中你可以做任何你想要做的事情.当然就比较新旧值这方面来说`DiffUtil`也会提供一些方法供你使用;
-
-![image-20211229222136903](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229222136903.png)
-
-```java
-@Component
-public class UpdateFreightTemplateParser implements IParseFunction {
-
-    @Autowired
-    private OperationLogsService operationLogsService;
-
-    @Override
-    public boolean executeBefore(){
-        return false;
-    }
-
-    @Override
-    public String functionName() {
-        return "updateFreightTemplate";
-    }
-
-    @Override
-    public String apply(String value) {
-        String old = (String)LogRecordContext.getVariable("old");
-        String aNew = (String)LogRecordContext.getVariable("new");
-
-        List<String> oldList = null;
-        if(!Strings.isBlank(old)) {
-            oldList = JSON.parseArray(old, String.class);
-
-        }
-        List<String> newList = null;
-        if(!Strings.isBlank(aNew)) {
-            newList = JSON.parseArray(aNew, String.class);
-        }
-
-        operationLogsService.insertLogDetail(oldList,newList,"适用地区");
-        return value;
-
-    }
-}
-```
-
-贴上整体代码:
-
-![image-20211229222536183](https://fechin-picgo.oss-cn-shanghai.aliyuncs.com/PicGo/image-20211229222536183.png)
-
